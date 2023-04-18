@@ -1,13 +1,14 @@
-import React, { lazy, FC } from "react";
+import React, { FC, lazy } from "react";
 
 import Dashboard from "@/pages/dashboard";
-import LoginPage from "@/pages/login";
 import LayoutPage from "@/pages/layout";
+import LoginPage from "@/pages/login";
+import { RouteObject, useRoutes } from "react-router-dom";
 import WrapperRouteComponent from "./config";
-import { useRoutes, RouteObject } from "react-router-dom";
 
 const NotFound = lazy(() => import('@/pages/404'));
 const Project = lazy(() => import('@/pages/project'));
+const Page1 = lazy(() => import('@/pages/project/page1'));
 
 const routeList: RouteObject[] = [
 
@@ -22,6 +23,10 @@ const routeList: RouteObject[] = [
       {
         path: "/project/list",
         element: <WrapperRouteComponent><Project /></WrapperRouteComponent>,
+      },
+      {
+        path: "/test/page1",
+        element: <WrapperRouteComponent><Page1 /></WrapperRouteComponent>,
       },
       {
         path: "*",

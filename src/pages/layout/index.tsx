@@ -1,22 +1,23 @@
-import React, { FC, useEffect, Suspense, useCallback, useState } from "react";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { MenuList, MenuChild } from "@/models/menu.interface";
-import { useGuide } from "../guide/useGuide";
-import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useGetCurrentMenus } from "@/api";
+import { MenuChild, MenuList } from "@/models/menu.interface";
 import { userState } from "@/stores/user";
+import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import React, { FC, useEffect, useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import { useGuide } from "../guide/useGuide";
 
+import { ReactComponent as LogoSvg } from "@/assets/logo/react.svg";
+import { useLocale } from "@/locales";
+import { FrownOutlined, HeartOutlined, SmileOutlined } from "@ant-design/icons";
 import type { MenuDataItem } from "@ant-design/pro-layout";
 import ProLayout from "@ant-design/pro-layout";
-import { SmileOutlined, HeartOutlined, FrownOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
-import { useLocale } from "@/locales";
 import { createBrowserHistory } from "history";
-import RightContent from "./components/RightContent";
-import { ReactComponent as LogoSvg } from "@/assets/logo/react.svg";
-import styles from "./index.module.less";
+import { Link } from "react-router-dom";
 import Footer from "./components/Footer";
+import RightContent from "./components/RightContent";
+import styles from "./index.module.less";
+import { addMenus } from "./menu";
 
 const history = createBrowserHistory();
 
@@ -125,7 +126,7 @@ const LayoutPage: FC = ({ children }) => {
           <span>{route.breadcrumbName}</span>
         );
       }}
-      menuDataRender={() => loopMenuItem(menuList)}
+      menuDataRender={() => loopMenuItem(menuList?.concat(addMenus))}
       // menuDataRender={() => m}
       rightContentRender={() => <RightContent />}
       footerRender={() => <Footer />}
