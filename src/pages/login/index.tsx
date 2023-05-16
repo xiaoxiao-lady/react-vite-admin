@@ -1,14 +1,14 @@
-import React, { FC } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-import { useNavigate, useLocation, Link } from "react-router-dom";
 import { LoginParams } from "@/models/login";
+import { Button, Checkbox, Form, Input } from "antd";
+import React, { FC } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import { loginAsync } from '@/stores/user.store';
 // import { useAppDispatch } from '@/stores';
-import { Location } from "history";
 import { useLogin } from "@/api";
+import { Location } from "history";
 
-import styles from "./index.module.less";
 import { ReactComponent as LogoSvg } from "@/assets/logo/logo.svg";
+import styles from "./index.module.less";
 
 const initialValues: LoginParams = {
   username: "guest",
@@ -42,7 +42,7 @@ const LoginForm: FC = () => {
         <div className={styles.header}>
           <Link to="/">
             <LogoSvg className={styles.logo} />
-            <span className={styles.title}>项目管理</span>
+            <span className={styles.title}>日常demo</span>
           </Link>
         </div>
         <div className={styles.desc}>全新技术栈(React\Recoil\React Query\React Hooks\Vite)的后台管理系统</div>

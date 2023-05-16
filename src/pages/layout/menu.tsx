@@ -8,7 +8,7 @@ export const addMenus:MenuDataItem[] = [
         "children": [
             {
                 "path": "/test/page1",
-                "name": "测试",
+                "name": "组件的重新渲染",
                 "icon": "smile"
             }
         ]
